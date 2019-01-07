@@ -21,6 +21,45 @@ public:
 
 	void Update() override;
 	void Draw() override;
+
+private:
+	bool is_shooting;
+};
+
+class MegamanJump : public State
+{
+public:
+	MegamanJump();
+	~MegamanJump();
+
+	void Update() override;
+	void Draw() override;
+
+private:
+	bool is_shooting;
+};
+
+class MegamanShoot : public State
+{
+public:
+	MegamanShoot();
+	~MegamanShoot();
+
+	void Update() override;
+	void Draw() override;
+};
+
+class MegamanDash : public State
+{
+public:
+	MegamanDash();
+	~MegamanDash();
+
+	void Update() override;
+	void Draw() override;
+
+private:
+	bool is_shooting;
 };
 
 #endif // MEGAMAN_STATES_H

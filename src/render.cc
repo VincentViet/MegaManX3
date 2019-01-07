@@ -80,6 +80,7 @@ HRESULT Renderer::Present() const
 
 void azorDestroyRenderer()
 {
+	g_renderer->handler->Release();
 	g_renderer->device9->Release();
 	delete g_renderer;
 	g_renderer = nullptr;

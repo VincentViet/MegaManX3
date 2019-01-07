@@ -24,15 +24,26 @@ Megaman::Megaman()
 	collider_decs.restitution = 0.0f;
 	collider_decs.userData = this;
 
-
 	State::megaman_idle = new MegamanIdle;
 	State::megaman_run = new MegamanRun;
+	State::megaman_jump = new MegamanJump;
+	State::megaman_shoot = new MegamanShoot;
+	State::megaman_dash = new MegamanDash;
 
 	tag = Tag::PLAYER;
 	ChangeState(State::megaman_idle);
 
 	g_window = azorGetWindow();
 	g_camera = azorGetCamera();
+}
+
+Megaman::~Megaman()
+{
+	delete State::megaman_idle;
+	delete State::megaman_run;
+	delete State::megaman_jump;
+	delete State::megaman_shoot;
+	delete State::megaman_dash;
 }
 
 void Megaman::Start()
@@ -70,12 +81,27 @@ void Megaman::OnColliderEnter(Object* collider)
 {
 	if (collider->tag == Tag::GROUND)
 	{
-		this->vel.y = 0;
+		if (is_jumping)
+		{
+			this->vel.y = 0.0f;
+			this->vel.x = 0.0f;
+			is_jumping = false;
+			ChangeState(State::megaman_idle);
+		}
 	}
 }
 
 void Megaman::OnColliderExit(Object* collider)
-{}
+{
+	if (collider->tag == Tag::GROUND)
+	{
+		if (!is_jumping)
+		{
+			is_jumping = true;
+			ChangeState(State::megaman_jump);
+		}
+	}
+}
 
 
 

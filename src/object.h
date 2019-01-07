@@ -27,6 +27,7 @@ public:
 	Tag tag;
 	Rigidbody* body{};
 	int8 direction = 1;
+	bool is_jumping = true;
 	BodyDecs body_decs;
 	ColliderDecs collider_decs;
 	int32 id{};

@@ -70,7 +70,7 @@ void Camera::Update()
 				is_follwing_y = true;
 		}
 
-		Debug::Log("y: %0.2f\n", target_->position.y);
+		// Debug::Log("y: %0.2f\n", target_->position.y);
 	}
 
 	bound.left = pos.x - width * 0.5f;

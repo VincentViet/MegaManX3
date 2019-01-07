@@ -4,10 +4,10 @@
 #include "camera.h"
 
 static AZORcamera g_camera;
+static Vec2 gravity;
 
 Object::Object(): tag(Tag::UNKNOWN)
 {
-	float32 gravity;
 	json_error_t error;
 	const auto configs =
 		static_cast<json_t*>(azorGetConfigsContent(&error));
@@ -18,17 +18,15 @@ Object::Object(): tag(Tag::UNKNOWN)
 			error.text,
 			error.line,
 			error.column);
-		gravity = 10.0f;
+		gravity.y = 10.0f;
 	}
 	else
 	{
 		const auto physic_configs = json_object_get(configs, "Physics");
-		gravity =
+		gravity.y =
 			json_real_value(json_object_get(physic_configs, "gravity"));
 	}
 
-
-	vel.y = gravity;
 	g_camera = azorGetCamera();
 }
 
@@ -39,6 +37,10 @@ Object::Object(Tag tag)
 void Object::Update()
 {
 	this->position += Debug::delta_time * vel;
+	if (is_jumping)
+	{
+		this->vel += Debug::delta_time * gravity;
+	}
 }
 
 void Object::ChangeState(State* state)

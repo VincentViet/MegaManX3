@@ -7,6 +7,9 @@
 class State;
 class MegamanIdle;
 class MegamanRun;
+class MegamanJump;
+class MegamanShoot;
+class MegamanDash;
 #pragma endregion
 
 class State
@@ -17,8 +20,11 @@ public:
 	virtual void Draw() = 0;
 
 #pragma region MegamanState
-	static MegamanIdle* megaman_idle;
-	static MegamanRun*  megaman_run;
+	static MegamanIdle*		megaman_idle;
+	static MegamanRun*		megaman_run;
+	static MegamanJump*		megaman_jump;
+	static MegamanShoot*	megaman_shoot;
+	static MegamanDash*		megaman_dash;
 #pragma endregion
 
 	// object binding;

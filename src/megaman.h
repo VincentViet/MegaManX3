@@ -7,6 +7,7 @@ class Megaman : public Object
 {
 public:
 	Megaman();
+	~Megaman();
 
 	void Start() override;
 	void Update() override;

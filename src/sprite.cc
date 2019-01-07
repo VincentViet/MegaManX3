@@ -27,13 +27,6 @@ Sprite::Sprite(const char* texture_alias, AZORrect rects)
 	g_window = azorGetWindow();
 }
 
-Sprite::~Sprite()
-{
-	if (handler)
-		handler->Release();
-}
-
-
 void Sprite::Draw(Vec2 position, uint64 color) const
 {
 	static D3DXVECTOR3 pos = D3DXVECTOR3{ 0, 0, 0 };
