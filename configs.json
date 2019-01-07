@@ -1,0 +1,13 @@
+{
+  "Window": {
+    "width": 800,
+    "height": 600,
+    "title": "MegaMan X3"
+  },
+  "Resources": {
+    "sprites_path": "./resources/sprites/"
+  },
+  "Physics": {
+    "gravity": 100.0
+  }
+}
