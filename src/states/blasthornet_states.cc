@@ -48,7 +48,7 @@ void BlasthornetIdleState::Draw()
 		index++;
 		f = Debug::total_time + Debug::delta_time * delay_;
 
-		if (index == 5)
+		if (index == 4)
 			index = 0;
 	}
 

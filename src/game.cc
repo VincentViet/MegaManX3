@@ -44,12 +44,15 @@ void InitializeMap()
 	azorGetCamera()->Follow(megaman);
 
 	helit = new Helit;
+	helit->body_decs.position = b2Vec2{ 700, 450 };
 	g_scene->AddObject(helit);
 
 	notorbanger = new Notorbanger;
+	notorbanger->body_decs.position = b2Vec2{ 500 , 500 };
 	g_scene->AddObject(notorbanger);
 
 	headgunner = new Headgunner;
+	headgunner->body_decs.position = b2Vec2{ 600, 500 };
 	g_scene->AddObject(headgunner);
 
 	genji = new Genji;
