@@ -3,9 +3,9 @@
 #include "../debug.h"
 #include <vector>
 
-NotorbangerIdleState*	State::notorbanger_idle;
-NotorbangerJumpState*	State::notorbanger_jump;
-NotorbangerShootState*	State::notorbanger_shoot;
+NotorbangerIdleState*		State::notorbanger_idle;
+NotorbangerJumpState*		State::notorbanger_jump;
+NotorbangerShootState*		State::notorbanger_shoot;
 NotorbangerExplodeState*	State::notorbanger_exploded;
 
 #pragma region Idle
@@ -34,6 +34,16 @@ void NotorbangerIdleState::Update()
 	static Notorbanger* notorbanger;
 	notorbanger = static_cast<Notorbanger*>(this->owner);
 	notorbanger->body->SetLinearVelocity(Vec2{ 0, 0 });
+	static float f = 1.0f;
+	if (f < 0.0f)
+	{
+		notorbanger->ChangeState(State::notorbanger_jump);
+		f = 1.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void NotorbangerIdleState::Draw()
@@ -79,6 +89,16 @@ void NotorbangerJumpState::Update()
 	static Notorbanger* notorbanger;
 	notorbanger = static_cast<Notorbanger*>(this->owner);
 	notorbanger->body->SetLinearVelocity(Vec2{ 0, 0 });
+	static float f = 1.0f;
+	if (f < 0.0f)
+	{
+		notorbanger->ChangeState(State::notorbanger_shoot);
+		f = 1.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void NotorbangerJumpState::Draw()
@@ -117,6 +137,17 @@ void NotorbangerShootState::Update()
 	static Notorbanger* notorbanger;
 	notorbanger = static_cast<Notorbanger*>(this->owner);
 	notorbanger->body->SetLinearVelocity(Vec2{ 0, 0 });
+
+	static float f = 1.0f;
+	if (f < 0.0f)
+	{
+		notorbanger->ChangeState(State::notorbanger_idle);
+		f = 1.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void NotorbangerShootState::Draw()
@@ -131,7 +162,7 @@ void NotorbangerShootState::Draw()
 		index++;
 		f = Debug::total_time + Debug::delta_time * delay_;
 
-		if (index == 5)
+		if (index == 4)
 			index = 0;
 	}
 

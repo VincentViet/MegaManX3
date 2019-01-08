@@ -34,6 +34,17 @@ void BlasthornetIdleState::Update()
 	static Blasthornet* blasthornet;
 	blasthornet = static_cast<Blasthornet*>(this->owner);
 	blasthornet->body->SetLinearVelocity(Vec2{ 0, 0 });
+
+	static float f = 2.0f;
+	if (f < 0.0f)
+	{
+		blasthornet->ChangeState(State::blasthornet_sting);
+		f = 2.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void BlasthornetIdleState::Draw()
@@ -61,13 +72,43 @@ BlasthornetStingState::BlasthornetStingState()
 {
 	static std::vector<Rect> rects
 	{
-		{66, 3, 116, 93},
-		{122, 4, 196, 93},
-		{200, 21, 296, 93},
-		{302, 22, 398, 93},
+		{16, 189, 63, 266},//dong3
+		{69, 192, 143, 266},
+		{148, 210, 244, 266},
+		{248, 190, 295, 266},
+		{298, 189, 373, 266},
+		{376, 208, 472, 266},
+
+		{15, 275, 62, 352},//dong4
+		{67, 276, 141, 352},
+		{146, 294, 240, 352},
+		{248, 275, 295, 355},
+		{299, 276, 373, 355},
+		{377, 294, 473, 355},
+
+		{15, 358, 62, 438},//dong5
+		{66, 359, 140, 438},
+		{145, 377, 241, 438},
+		{250,358 , 297, 438},
+		{302, 359, 376, 438},
+		{382, 377, 478, 438},
+
+		{14, 446, 62, 527},//dong6
+		{70, 447, 144, 527},
+		{149, 465, 245, 527},
+		{251, 446, 300, 526},
+		{306, 447, 380, 526},
+		{386, 465, 482, 526},
+
+		{16, 537, 63, 617},//dong7
+		{69, 538, 148, 617},
+		{155, 556, 251, 617},
+		{260, 537, 308, 617},
+		{315, 538, 389, 617},
+		{394, 556, 490, 617},
 	};
 
-	delay_ = 5;
+	delay_ = 10;
 
 	sprite_ = new Sprite(BLASTHORNET_ALIAS, rects.data());
 }
@@ -82,6 +123,17 @@ void BlasthornetStingState::Update()
 	static Blasthornet* blasthornet;
 	blasthornet = static_cast<Blasthornet*>(this->owner);
 	blasthornet->body->SetLinearVelocity(Vec2{ 0, 0 });
+
+	static float f = 4.0f;
+	if (f < 0.0f)
+	{
+		blasthornet->ChangeState(State::blasthornet_call);
+		f = 4.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void BlasthornetStingState::Draw()
@@ -96,7 +148,7 @@ void BlasthornetStingState::Draw()
 		index++;
 		f = Debug::total_time + Debug::delta_time * delay_;
 
-		if (index == 5)
+		if (index == 30)
 			index = 0;
 	}
 
@@ -109,13 +161,15 @@ BlasthornetCallState::BlasthornetCallState()
 {
 	static std::vector<Rect> rects
 	{
-		{66, 3, 116, 93},
-		{122, 4, 196, 93},
-		{200, 21, 296, 93},
-		{302, 22, 398, 93},
+		{15, 99, 62, 183},//dong2
+		{67, 99, 141, 183},
+		{144, 117, 240, 183},
+		{247, 99, 294, 180},
+		{299, 100, 373, 180},
+		{377, 118, 472, 180},
 	};
 
-	delay_ = 5;
+	delay_ = 10;
 
 	sprite_ = new Sprite(BLASTHORNET_ALIAS, rects.data());
 }
@@ -130,6 +184,17 @@ void BlasthornetCallState::Update()
 	static Blasthornet* blasthornet;
 	blasthornet = static_cast<Blasthornet*>(this->owner);
 	blasthornet->body->SetLinearVelocity(Vec2{ 0, 0 });
+
+	static float f = 2.0f;
+	if (f < 0.0f)
+	{
+		blasthornet->ChangeState(State::blasthornet_idle);
+		f = 2.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void BlasthornetCallState::Draw()
@@ -144,7 +209,7 @@ void BlasthornetCallState::Draw()
 		index++;
 		f = Debug::total_time + Debug::delta_time * delay_;
 
-		if (index == 5)
+		if (index == 4)
 			index = 0;
 	}
 

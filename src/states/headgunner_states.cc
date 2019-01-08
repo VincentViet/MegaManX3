@@ -30,6 +30,16 @@ void HeadgunnerIdleState::Update()
 	static Headgunner* headgunner;
 	headgunner = static_cast<Headgunner*>(this->owner);
 	headgunner->body->SetLinearVelocity(Vec2{ 0, 0 });
+	static float f = 1.0f;
+	if (f < 0.0f)
+	{
+		headgunner->ChangeState(State::headgunner_shoot);
+		f = 1.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void HeadgunnerIdleState::Draw()
@@ -42,7 +52,7 @@ void HeadgunnerIdleState::Draw()
 }
 #pragma endregion
 
-#pragma region Jump
+#pragma region Shoot
 HeadgunnerShootState::HeadgunnerShootState()
 {
 	static std::vector<Rect> rects
@@ -73,6 +83,17 @@ void HeadgunnerShootState::Update()
 	static Headgunner* headgunner;
 	headgunner = static_cast<Headgunner*>(this->owner);
 	headgunner->body->SetLinearVelocity(Vec2{ 0, 0 });
+
+	static float f = 1.0f;
+	if (f < 0.0f)
+	{
+		headgunner->ChangeState(State::headgunner_idle);
+		f = 1.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void HeadgunnerShootState::Draw()
@@ -87,7 +108,7 @@ void HeadgunnerShootState::Draw()
 		index++;
 		f = Debug::total_time + Debug::delta_time * delay_;
 
-		if (index == 9)
+		if (index == 8)
 			index = 0;
 	}
 

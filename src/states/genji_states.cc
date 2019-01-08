@@ -29,6 +29,17 @@ void GenjiIdleState::Update()
 	static Genji* genji;
 	genji = static_cast<Genji*>(this->owner);
 	genji->body->SetLinearVelocity(Vec2{ 0, 0 });
+
+	static float f = 1.0f;
+	if (f < 0.0f)
+	{
+		genji->ChangeState(State::genji_rotate);
+		f = 1.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void GenjiIdleState::Draw()
@@ -46,16 +57,32 @@ GenjiRotateState::GenjiRotateState()
 {
 	static std::vector<Rect> rects
 	{
-		{15, 271, 62, 318},
-		{69, 271, 114, 316},
-		{120, 273, 167, 320},
-		{174, 271, 223, 320},
-		{228, 271, 277, 320},
-		{284, 274, 331, 321},
-		{340, 274, 385, 319},
-		{399, 274, 444, 319},
-		{451, 273, 498, 320},
-		{502, 274, 551, 323},
+		{3, 412, 3 + 46, 412 + 50},
+		{54, 412, 54 + 45, 412 + 50},
+		{103, 412, 103 + 45, 412 + 50},
+		{150, 412, 150 + 41, 412 + 50},
+		{198, 412, 198 + 36, 412 + 50},
+		{238, 412, 238 + 36, 412 + 50},
+		{278, 412, 278 + 36, 412 + 48},
+		{315, 412, 315 + 31, 412 + 50},
+		{348, 412, 348 + 36, 412 + 50},
+		{412, 412, 412 + 24, 412 + 50},
+		{440, 412, 440 + 21, 412 + 50},
+		{465, 412, 465 + 14, 412 + 50},
+		{486, 412, 486 + 10, 412 + 50},
+		{503, 412, 503 + 9, 412 + 50},
+		{517, 412, 517 + 9, 412 + 50},
+		{530, 412, 530 + 9, 412 + 50},
+
+		{517, 412, 517 + 9, 412 + 50},
+		{503, 412, 503 + 9, 412 + 50},
+		{486, 412, 486 + 10, 412 + 50},
+		{465, 412, 465 + 14, 412 + 50},
+		{440, 412, 440 + 21, 412 + 50},
+		{412, 412, 412 + 24, 412 + 50},
+		{348, 412, 348 + 36, 412 + 50},
+		{315, 412, 315 + 31, 412 + 50},
+		{278, 412, 278 + 36, 412 + 48},
 	};
 
 	delay_ = 5;
@@ -73,6 +100,17 @@ void GenjiRotateState::Update()
 	static Genji* genji;
 	genji = static_cast<Genji*>(this->owner);
 	genji->body->SetLinearVelocity(Vec2{ 0, 0 });
+
+	static float f = 5.0f;
+	if (f < 0.0f)
+	{
+		genji->ChangeState(State::genji_idle);
+		f = 5.0f;
+	}
+	else
+	{
+		f -= Debug::delta_time;
+	}
 }
 
 void GenjiRotateState::Draw()
@@ -87,7 +125,7 @@ void GenjiRotateState::Draw()
 		index++;
 		f = Debug::total_time + Debug::delta_time * delay_;
 
-		if (index == 11)
+		if (index == 25)
 			index = 0;
 	}
 

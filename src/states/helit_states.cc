@@ -59,7 +59,7 @@ void HelitIdleState::Draw()
 
 #pragma endregion
 
-#pragma region Run
+#pragma region Explode
 HelitExlodedState::HelitExlodedState()
 {
 	static std::vector<Rect> rects
