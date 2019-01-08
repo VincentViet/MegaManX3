@@ -10,7 +10,7 @@ typedef class Object
 public:
 	Object();
 	explicit Object(Tag tag);
-
+	
 	virtual void Start() {}
 	virtual void Update();
 	virtual void Draw() {}
@@ -22,7 +22,7 @@ public:
 
 	Vec2 GetPosition() const;
 
-	virtual ~Object() = default;
+	virtual ~Object();
 
 	Tag tag;
 	Rigidbody* body{};
@@ -32,7 +32,6 @@ public:
 	ColliderDecs collider_decs;
 	int32 id{};
 	Vec2 position;
-	// Vec2 vel;
 	State* state{};
 
 protected:

@@ -127,6 +127,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\common\settings.cc" />
+    <ClCompile Include="src\bullets\bullet.cc" />
+    <ClCompile Include="src\bullets\busters\large_buster.cc" />
+    <ClCompile Include="src\bullets\busters\medium_buster.cc" />
+    <ClCompile Include="src\bullets\busters\small_buster.cc" />
     <ClCompile Include="src\camera.cc" />
     <ClCompile Include="src\debug.cc" />
     <ClCompile Include="src\game.cc" />
@@ -139,6 +143,8 @@
     <ClCompile Include="src\render.cc" />
     <ClCompile Include="src\resources.cc" />
     <ClCompile Include="src\scenes.cc" />
+    <ClCompile Include="src\spawners\buster_spawners.cc" />
+    <ClCompile Include="src\spawners\spawner.cc" />
     <ClCompile Include="src\sprite.cc" />
     <ClCompile Include="src\states\boss_states.cc" />
     <ClCompile Include="src\states\creep_states.cc" />
@@ -149,6 +155,10 @@
   <ItemGroup>
     <ClInclude Include="include\common\math.h" />
     <ClInclude Include="include\common\settings.h" />
+    <ClInclude Include="src\bullets\bullet.h" />
+    <ClInclude Include="src\bullets\busters\large_buster.h" />
+    <ClInclude Include="src\bullets\busters\medium_buster.h" />
+    <ClInclude Include="src\bullets\busters\small_buster.h" />
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\debug.h" />
     <ClInclude Include="src\ground.h" />
@@ -159,6 +169,8 @@
     <ClInclude Include="src\render.h" />
     <ClInclude Include="src\resources.h" />
     <ClInclude Include="src\scenes.h" />
+    <ClInclude Include="src\spawners\buster_spawners.h" />
+    <ClInclude Include="src\spawners\spawner.h" />
     <ClInclude Include="src\sprite.h" />
     <ClInclude Include="src\state.h" />
     <ClInclude Include="src\states\boss_states.h" />

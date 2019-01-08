@@ -52,6 +52,7 @@ void MegamanIdle::Update()
 	}
 	else if (azorIsKeyDown(Keys::KEY_C))
 	{
+		megaman->spawner->Shoot();
 		megaman->ChangeState(State::megaman_shoot);
 	}
 	else if (azorIsKeyDown(Keys::KEY_Z)/* && delay < 0.0f*/)
@@ -322,6 +323,7 @@ MegamanShoot::MegamanShoot()
 
 	delay_ = 5;
 	sprite_ = new Sprite(MEGAMAN_ALIAS, rects.data());
+
 }
 
 MegamanShoot::~MegamanShoot()
@@ -332,11 +334,9 @@ MegamanShoot::~MegamanShoot()
 void MegamanShoot::Update()
 {
 	static Megaman* megaman;
-
 	megaman = static_cast<Megaman*>(this->owner);
 	if (azorIsKeyDown(Keys::KEY_C))
 	{
-		
 	}
 	else
 	{
@@ -473,9 +473,9 @@ MegamanClimb::~MegamanClimb()
 void MegamanClimb::Update()
 {
 	static Megaman* megaman;
-	static Vec2 vel;
+	// static Vec2 vel;
 	megaman = static_cast<Megaman*>(this->owner);
-	vel = megaman->body->GetLinearVelocity();
+	// vel = megaman->body->GetLinearVelocity();
 
 	if (azorIsKeyDown(Keys::KEY_X))
 	{

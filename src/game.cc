@@ -16,6 +16,7 @@ void LoadResources()
 {
 	azorLoadTextureFromFile("background.png", "bg");
 	azorLoadTextureFromFile("x_sprites.png", "megaman");
+	azorLoadTextureFromFile("buster.png", "buster");
 	g_scene = azorGetScene();
 }
 

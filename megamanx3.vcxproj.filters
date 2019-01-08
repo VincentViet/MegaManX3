@@ -25,6 +25,15 @@
     <Filter Include="Header Files\states">
       <UniqueIdentifier>{c9fef6f6-edc4-407e-a43f-2b1762383d78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\game\bullets">
+      <UniqueIdentifier>{86b2eaff-3e8c-4e83-aed1-0667cc42700f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game\bullets\busters">
+      <UniqueIdentifier>{60d0279d-50be-4b05-9d3c-54db027ba4cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game\spawners">
+      <UniqueIdentifier>{34308986-66b1-4903-9599-c3e293598bd1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\input.cc">
@@ -84,6 +93,24 @@
     <ClCompile Include="src\wall.cc">
       <Filter>Header Files\game</Filter>
     </ClCompile>
+    <ClCompile Include="src\bullets\bullet.cc">
+      <Filter>Header Files\game\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bullets\busters\large_buster.cc">
+      <Filter>Header Files\game\bullets\busters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bullets\busters\medium_buster.cc">
+      <Filter>Header Files\game\bullets\busters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bullets\busters\small_buster.cc">
+      <Filter>Header Files\game\bullets\busters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spawners\buster_spawners.cc">
+      <Filter>Header Files\game\spawners</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spawners\spawner.cc">
+      <Filter>Header Files\game\spawners</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\input.h">
@@ -142,6 +169,24 @@
     </ClInclude>
     <ClInclude Include="src\wall.h">
       <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bullets\bullet.h">
+      <Filter>Header Files\game\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bullets\busters\large_buster.h">
+      <Filter>Header Files\game\bullets\busters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bullets\busters\medium_buster.h">
+      <Filter>Header Files\game\bullets\busters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bullets\busters\small_buster.h">
+      <Filter>Header Files\game\bullets\busters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spawners\spawner.h">
+      <Filter>Header Files\game\spawners</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spawners\buster_spawners.h">
+      <Filter>Header Files\game\spawners</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

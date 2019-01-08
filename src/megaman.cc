@@ -4,6 +4,7 @@
 #include "window.h"
 #include "camera.h"
 #include "debug.h"
+#include "spawners/buster_spawners.h"
 
 static AZORwindow g_window;
 static AZORcamera g_camera;
@@ -36,6 +37,8 @@ Megaman::Megaman()
 	ChangeState(State::megaman_idle);
 
 	is_touch_ground = false;
+
+	spawner = new SmallBusterSpawner(Vec2{10, 0}, this);
 
 	g_window = azorGetWindow();
 	g_camera = azorGetCamera();
@@ -100,6 +103,7 @@ void Megaman::Update()
 	old_pos = body->GetPosition();
 
 	state->Update();
+	spawner->Update();
 }
 
 void Megaman::Draw()
