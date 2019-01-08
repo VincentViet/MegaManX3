@@ -6,6 +6,7 @@
 #include <physics/world_callbacks.h>
 #include <physics/world.h>
 #include <physics/contact.h>
+#include <jansson/jansson.h>
 
 static AZORphysics g_physics = nullptr;
 
@@ -60,7 +61,27 @@ AZORphysics azorGetPhysics()
 	{
 		g_physics = new Physics;
 
-		g_physics->world = new World(b2Vec2{ 0, 0.0f});
+		float32 gravity;
+		json_error_t error;
+		const auto configs =
+			static_cast<json_t*>(azorGetConfigsContent(&error));
+		if (!configs)
+		{
+			printf(
+				"Jansson Error: %s at line %d column %d\n",
+				error.text,
+				error.line,
+				error.column);
+			gravity = 10.0f;
+		}
+		else
+		{
+			const auto physic_configs = json_object_get(configs, "Physics");
+			gravity =
+				json_real_value(json_object_get(physic_configs, "gravity"));
+		}
+
+		g_physics->world = new World(b2Vec2{ 0, gravity});
 
 		contact_listener = new MyContactListener;
 		g_physics->world->SetContactListener(contact_listener);

@@ -2,7 +2,6 @@
 #include "../input.h"
 #include "../megaman.h"
 #include "../debug.h"
-// #include "../camera.h"
 #include <vector>
 
 MegamanIdle* State::megaman_idle;
@@ -10,6 +9,7 @@ MegamanRun*	State::megaman_run;
 MegamanJump* State::megaman_jump;
 MegamanShoot* State::megaman_shoot;
 MegamanDash* State::megaman_dash;
+MegamanClimb* State::megaman_climb;
 
 #pragma region Idle
 MegamanIdle::MegamanIdle()
@@ -45,7 +45,7 @@ void MegamanIdle::Update()
 	{
 		megaman->ChangeState(State::megaman_run);
 	}
-	else if (azorIsKeyDown(Keys::KEY_X) && delay < 0.0f)
+	else if (azorIsKeyDown(Keys::KEY_X)/* && delay < 0.0f*/)
 	{
 		megaman->ChangeState(State::megaman_jump);
 		delay = 1.0f;
@@ -133,12 +133,15 @@ MegamanRun::~MegamanRun()
 void MegamanRun::Update()
 {
 	static Megaman* megaman;
-
+	static Vec2 vel;
 	megaman = static_cast<Megaman*>(this->owner);
+
+	vel = megaman->body->GetLinearVelocity();
 	if (azorIsKeyDown(Keys::LEFTARROW))
 	{
 		megaman->direction = -1;
-		megaman->vel.x = -100;
+		megaman->body->SetLinearVelocity(Vec2{ -50, vel.y });
+		// megaman->vel.x = -100;
 		if (azorIsKeyDown(Keys::KEY_X))
 		{
 			megaman->ChangeState(State::megaman_jump);
@@ -162,7 +165,8 @@ void MegamanRun::Update()
 	if (azorIsKeyDown(Keys::RIGHTARROW))
 	{
 		megaman->direction = 1;
-		megaman->vel.x = 100;
+		megaman->body->SetLinearVelocity(Vec2{ 50, vel.y });
+		// megaman->vel.x = 100;
 		if (azorIsKeyDown(Keys::KEY_X))
 		{
 			megaman->ChangeState(State::megaman_jump);
@@ -182,7 +186,7 @@ void MegamanRun::Update()
 		return;
 	}
 
-	megaman->vel.x = 0;
+	megaman->body->SetLinearVelocity(Vec2{0, 0});
 	megaman->ChangeState(State::megaman_idle);
 }
 
@@ -244,24 +248,31 @@ MegamanJump::~MegamanJump()
 void MegamanJump::Update()
 {
 	static Megaman* megaman;
+	static Vec2 vel;
 
 	megaman = static_cast<Megaman*>(this->owner);
+	vel = megaman->body->GetLinearVelocity();
 	if (!megaman->is_jumping)
 	{
-		megaman->vel.y = -150;
+		// megaman->vel.y = -150;
+		vel.y = -400;
 		megaman->is_jumping = true;
 	}
 
 	if (azorIsKeyDown(Keys::LEFTARROW))
 	{
 		megaman->direction = -1;
-		megaman->vel.x = -100;
+		vel.x = -50;
+		// megaman->vel.x = -100;
 	}
 	else if (azorIsKeyDown(Keys::RIGHTARROW))
 	{
 		megaman->direction = 1;
-		megaman->vel.x = 100;
+		vel.x = 50;
+		// megaman->vel.x = 100;
 	}
+
+	megaman->body->SetLinearVelocity(vel);
 
 	if (azorIsKeyDown(Keys::KEY_C))
 	{
@@ -380,11 +391,14 @@ MegamanDash::~MegamanDash()
 void MegamanDash::Update()
 {
 	static Megaman* megaman;
+	static Vec2 vel;
 	static float32 charge_time = 0.3f;
 	megaman = static_cast<Megaman*>(this->owner);
+	vel = megaman->body->GetLinearVelocity();
 	if (azorIsKeyDown(Keys::KEY_Z) && charge_time > 0.0f)
 	{
-		megaman->vel.x = 300 * megaman->direction;
+		// megaman->vel.x = 300 * megaman->direction;
+		vel.x = 300 * megaman->direction;
 		if (azorIsKeyDown(Keys::KEY_X))
 		{
 			megaman->ChangeState(State::megaman_jump);
@@ -395,14 +409,17 @@ void MegamanDash::Update()
 		else { is_shooting = false; }
 
 		charge_time -= Debug::delta_time;
-		Debug::Log("%0.2f\n", charge_time);
+		// Debug::Log("%0.2f\n", charge_time);
 	}
 	else
 	{
 		charge_time = 0.3f;
-		megaman->vel.x = 0;
+		// megaman->vel.x = 0;
+		vel.x = 0.0f;
 		megaman->ChangeState(State::megaman_idle);
 	}
+
+	megaman->body->SetLinearVelocity(vel);
 }
 
 void MegamanDash::Draw()
@@ -429,3 +446,66 @@ void MegamanDash::Draw()
 	sprite_->Draw(index + offset, megaman->GetPosition(), megaman->direction);
 }
 #pragma endregion
+
+
+#pragma region Climp
+MegamanClimb::MegamanClimb()
+{
+	static std::vector<Rect> rects
+	{
+		// normal climb
+		{144, 527, 144 + 28, 527 + 42},
+
+		// climb shoot
+		{310, 526, 310 + 32, 526 + 42}
+	};
+
+	delay_ = 5;
+	sprite_ = new Sprite(MEGAMAN_ALIAS, rects.data());
+	is_shooting = false;
+}
+
+MegamanClimb::~MegamanClimb()
+{
+	delete sprite_;
+}
+
+void MegamanClimb::Update()
+{
+	static Megaman* megaman;
+	static Vec2 vel;
+	megaman = static_cast<Megaman*>(this->owner);
+	vel = megaman->body->GetLinearVelocity();
+
+	if (azorIsKeyDown(Keys::KEY_X))
+	{
+		const uint8 dir = megaman->direction;
+		megaman->body->SetLinearVelocity(Vec2{ -dir * 50.0f, -dir * 200.0f });
+		megaman->ChangeState(State::megaman_jump);
+	}
+}
+
+void MegamanClimb::Draw()
+{
+	static uint8 index = 0;
+	// static uint8 offset = 0;
+	static float32 f = 0.0f;
+	static Megaman* megaman;
+
+	megaman = static_cast<Megaman*>(this->owner);
+	if (f < Debug::total_time)
+	{
+		// index++;
+		f = Debug::total_time + Debug::delta_time * delay_;
+
+		// if (index == 1)
+		// 	index = 0;
+
+		if (is_shooting)
+			index = 1;
+		else { index = 0; }
+	}
+
+	sprite_->Draw(index, megaman->GetPosition(), megaman->direction);
+}
+#pragma endregion 

@@ -32,7 +32,7 @@ public:
 	ColliderDecs collider_decs;
 	int32 id{};
 	Vec2 position;
-	Vec2 vel;
+	// Vec2 vel;
 	State* state{};
 
 protected:

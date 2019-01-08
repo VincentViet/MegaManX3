@@ -10,6 +10,7 @@ class MegamanRun;
 class MegamanJump;
 class MegamanShoot;
 class MegamanDash;
+class MegamanClimb;
 #pragma endregion
 
 class State
@@ -25,6 +26,7 @@ public:
 	static MegamanJump*		megaman_jump;
 	static MegamanShoot*	megaman_shoot;
 	static MegamanDash*		megaman_dash;
+	static MegamanClimb*	megaman_climb;
 #pragma endregion
 
 	// object binding;

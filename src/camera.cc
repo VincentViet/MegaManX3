@@ -4,8 +4,8 @@
 #include "debug.h"
 
 static AZORcamera g_camera;
-static bool is_follwing_x;
-static bool is_follwing_y;
+// static bool is_follwing_x;
+// static bool is_follwing_y;
 
 Camera::Camera(int32 width, int32 height, Vec2 pos)
 	: width(width), height(height), pos(pos), target_(nullptr)
@@ -17,6 +17,7 @@ Camera::Camera(int32 width, int32 height, Vec2 pos)
 
 	is_follwing_x = true;
 	is_follwing_y = true;
+	offset_x = offset_y = 0;
 }
 
 void Camera::Update()
@@ -37,15 +38,16 @@ void Camera::Update()
 			}
 			else
 			{
-				pos.x = target_->position.x;
+				// pos.x = target_->body->GetPosition().x;
+				pos.x += offset_x;
 			}
 		}
 		else
 		{
-			if (target_->position.x >= this->pos.x)
+			if (target_->body->GetPosition().x >= width * 0.5f)
 				is_follwing_x = true;
 		}
-
+		
 		if (is_follwing_y)
 		{
 			if (bound.top < 0)
@@ -61,14 +63,62 @@ void Camera::Update()
 			}
 			else
 			{
-				pos.y = target_->position.y;
+				// pos.y = target_->body->GetPosition().
+				pos.y += offset_y;
 			}
 		}
 		else
 		{
-			if (target_->position.y <= this->pos.y)
+			if (target_->body->GetPosition().y <= height * 0.5f)
 				is_follwing_y = true;
 		}
+
+		// if (is_follwing_x)
+		// {
+		// 	if (bound.left < 0)
+		// 	{
+		// 		pos.x = /*width * 0.5f*/ 400;
+		// 		is_follwing_x = false;
+		// 	}
+		// 	else if (bound.right > MAP_MAX_WIDTH)
+		// 	{
+		// 		pos.x = MAP_MAX_WIDTH - 400 /*width * 0.5f*/;
+		// 		is_follwing_x = false;
+		// 	}
+		// 	else
+		// 	{
+		// 		pos.x = target_->position.x;
+		// 	}
+		// }
+		// else
+		// {
+		// 	if (target_->position.x >= this->pos.x)
+		// 		is_follwing_x = true;
+		// }
+		//
+		// if (is_follwing_y)
+		// {
+		// 	if (bound.top < 0)
+		// 	{
+		// 		pos.y = height * 0.5f;
+		// 		is_follwing_y = false;
+		// 	}
+		// 	else if (bound.bottom > MAP_MAX_HEIGHT)
+		// 	{
+		// 		pos.y = MAP_MAX_HEIGHT - height * 0.5f;
+		// 		is_follwing_y = false;
+		// 		return;
+		// 	}
+		// 	else
+		// 	{
+		// 		pos.y = target_->position.y;
+		// 	}
+		// }
+		// else
+		// {
+		// 	if (target_->position.y <= this->pos.y)
+		// 		is_follwing_y = true;
+		// }
 
 		// Debug::Log("y: %0.2f\n", target_->position.y);
 	}

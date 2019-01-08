@@ -36,11 +36,11 @@ Object::Object(Tag tag)
 
 void Object::Update()
 {
-	this->position += Debug::delta_time * vel;
-	if (is_jumping)
-	{
-		this->vel += Debug::delta_time * gravity;
-	}
+	// this->position += Debug::delta_time * vel;
+	// if (is_jumping)
+	// {
+	// 	this->vel += Debug::delta_time * gravity;
+	// }
 }
 
 void Object::ChangeState(State* state)

@@ -21,6 +21,8 @@ public:
 	Vec2 pos;
 	bool is_follwing_x;
 	bool is_follwing_y;
+	float32 offset_x;
+	float32 offset_y;
 protected:
 private:
 	Object* target_;
