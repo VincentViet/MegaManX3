@@ -144,6 +144,12 @@ void b2Log(const char* string, ...);
 
 // SPRITE ALIAS
 #define MEGAMAN_ALIAS "megaman"
+#define HELIT_ALIAS "helit"
+#define EXPLODE_ALIAS "explode"
+#define NOTORBANGER_ALIAS "notorbanger"
+#define HEADGUNNER_ALIAS "headgunner"
+#define GENJI_ALIAS "genji"
+#define BLASTHORNET_ALIAS "blasthornet"
 
 // DEBUG MODE
 #define DEBUG_MODE 1

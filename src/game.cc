@@ -1,14 +1,24 @@
 #include "resources.h"
 #include "scenes.h"
 #include "megaman.h"
+#include "helit.h"
+#include "notorbanger.h"
+#include "headgunner.h"
+#include "genji.h"
+#include "blasthornet.h"
 #include "camera.h"
 #include "ground.h"
 #include <vector>
 #include "wall.h"
 
-
 static AZORscene g_scene;
 static Megaman* megaman;
+static Helit* helit;
+static Notorbanger* notorbanger;
+static Headgunner* headgunner;
+static Genji* genji;
+static Blasthornet* blasthornet;
+
 static std::vector<Ground*> grounds;
 static std::vector<Wall*> walls;
 
@@ -16,6 +26,13 @@ void LoadResources()
 {
 	azorLoadTextureFromFile("background.png", "bg");
 	azorLoadTextureFromFile("x_sprites.png", "megaman");
+	azorLoadTextureFromFile("x3_helit.png", "helit");
+	azorLoadTextureFromFile("x3_explosions.png", "explode");
+	azorLoadTextureFromFile("x3_notorbanger.png", "notorbanger");
+	azorLoadTextureFromFile("x3_headgunnercustomer.png", "headgunner");
+	azorLoadTextureFromFile("x3_subboss_genjibo.png", "genji");
+	azorLoadTextureFromFile("x3_blasthornet.png", "blasthornet");
+
 	g_scene = azorGetScene();
 }
 
@@ -25,6 +42,21 @@ void InitializeMap()
 	megaman = new Megaman;
 	g_scene->AddObject(megaman);
 	azorGetCamera()->Follow(megaman);
+
+	helit = new Helit;
+	g_scene->AddObject(helit);
+
+	notorbanger = new Notorbanger;
+	g_scene->AddObject(notorbanger);
+
+	headgunner = new Headgunner;
+	g_scene->AddObject(headgunner);
+
+	genji = new Genji;
+	g_scene->AddObject(genji);
+
+	blasthornet = new Blasthornet;
+	g_scene->AddObject(blasthornet);
 
 #pragma region Map
 	grounds.push_back(new Ground(Vec2{ 0 + 842.0f / 2, 953 }, 842, 0));
