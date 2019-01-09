@@ -10,7 +10,7 @@ static AZORcamera g_camera;
 
 Megaman::Megaman()
 {
-	body_decs.position = b2Vec2{ 100, 450 };
+	body_decs.position = b2Vec2{ 50, 450 };
 	body_decs.type = BodyType::DYNAMIC;
 	body_decs.fixedRotation = true;
 	body_decs.userData = this;

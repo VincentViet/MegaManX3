@@ -8,7 +8,6 @@
 #include "blasthornet.h"
 #include "camera.h"
 #include "ground.h"
-#include <vector>
 #include "wall.h"
 
 static AZORscene g_scene;
@@ -43,23 +42,23 @@ void InitializeMap()
 	g_scene->AddObject(megaman);
 	azorGetCamera()->Follow(megaman);
 
-	helit = new Helit;
-	helit->body_decs.position = b2Vec2{ 700, 450 };
-	g_scene->AddObject(helit);
-
-	notorbanger = new Notorbanger;
-	notorbanger->body_decs.position = b2Vec2{ 500 , 500 };
-	g_scene->AddObject(notorbanger);
-
-	headgunner = new Headgunner;
-	headgunner->body_decs.position = b2Vec2{ 600, 500 };
-	g_scene->AddObject(headgunner);
-
-	genji = new Genji;
-	g_scene->AddObject(genji);
-
-	blasthornet = new Blasthornet;
-	g_scene->AddObject(blasthornet);
+	// helit = new Helit;
+	// helit->body_decs.position = b2Vec2{ 700, 450 };
+	// g_scene->AddObject(helit);
+	//
+	// notorbanger = new Notorbanger;
+	// notorbanger->body_decs.position = b2Vec2{ 500 , 500 };
+	// g_scene->AddObject(notorbanger);
+	//
+	// headgunner = new Headgunner;
+	// headgunner->body_decs.position = b2Vec2{ 600, 500 };
+	// g_scene->AddObject(headgunner);
+	//
+	// genji = new Genji;
+	// g_scene->AddObject(genji);
+	//
+	// blasthornet = new Blasthornet;
+	// g_scene->AddObject(blasthornet);
 
 #pragma region Map
 	grounds.push_back(new Ground(Vec2{ 0 + 842.0f / 2, 953 }, 842, 0));

@@ -70,12 +70,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>F:\MegamanX3\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\MegamanX3\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>./include</IncludePath>
+    <LibraryPath>./lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>D:\ExternalLibraries\megamanx3\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\ExternalLibraries\megamanx3\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>./include</IncludePath>
+    <LibraryPath>./lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
