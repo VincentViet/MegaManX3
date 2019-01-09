@@ -127,6 +127,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\common\settings.cc" />
+    <ClCompile Include="src\blasthornet.cc" />
     <ClCompile Include="src\bullets\bullet.cc" />
     <ClCompile Include="src\bullets\busters\large_buster.cc" />
     <ClCompile Include="src\bullets\busters\medium_buster.cc" />
@@ -135,10 +136,14 @@
     <ClCompile Include="src\debug.cc" />
     <ClCompile Include="src\elevator.cc" />
     <ClCompile Include="src\game.cc" />
+    <ClCompile Include="src\genji.cc" />
     <ClCompile Include="src\ground.cc" />
+    <ClCompile Include="src\headgunner.cc" />
+    <ClCompile Include="src\helit.cc" />
     <ClCompile Include="src\input.cc" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\megaman.cc" />
+    <ClCompile Include="src\notorbanger.cc" />
     <ClCompile Include="src\object.cc" />
     <ClCompile Include="src\physics.cc" />
     <ClCompile Include="src\render.cc" />
@@ -156,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="include\common\math.h" />
     <ClInclude Include="include\common\settings.h" />
+    <ClInclude Include="src\blasthornet.h" />
     <ClInclude Include="src\bullets\bullet.h" />
     <ClInclude Include="src\bullets\busters\large_buster.h" />
     <ClInclude Include="src\bullets\busters\medium_buster.h" />
@@ -163,9 +169,13 @@
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\debug.h" />
     <ClInclude Include="src\elevator.h" />
+    <ClInclude Include="src\genji.h" />
     <ClInclude Include="src\ground.h" />
+    <ClInclude Include="src\headgunner.h" />
+    <ClInclude Include="src\helit.h" />
     <ClInclude Include="src\input.h" />
     <ClInclude Include="src\megaman.h" />
+    <ClInclude Include="src\notorbanger.h" />
     <ClInclude Include="src\object.h" />
     <ClInclude Include="src\physics.h" />
     <ClInclude Include="src\render.h" />

@@ -60,7 +60,13 @@ void MegamanIdle::Update()
 		megaman->ChangeState(State::megaman_dash);
 		// delay = 1.0f;
 	}
+	else if(megaman->is_jumping)
+	{
+		megaman->ChangeState(State::megaman_jump);
+	}
 	else { delay -= Debug::delta_time; }
+
+	// megaman->vel.x = 0;
 }
 
 void MegamanIdle::Draw()
@@ -264,8 +270,16 @@ void MegamanJump::Update()
 	if (!megaman->is_jumping)
 	{
 		// megaman->vel.y = -150;
-		vel.y = -800;
-		megaman->is_jumping = true;
+		if (!megaman->is_touch_elevator)
+		{
+			vel.y = -800;
+			megaman->is_jumping = true;
+		}
+		else
+		{
+			megaman->is_jumping = false;
+			megaman->ChangeState(State::megaman_idle);
+		}
 	}
 
 	if (azorIsKeyDown(Keys::LEFTARROW))

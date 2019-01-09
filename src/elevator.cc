@@ -7,7 +7,7 @@ static AZORcamera g_camera;
 
 Elevator::Elevator()
 {
-	position = Vec2{ 885, 970 };
+	position = Vec2{ 890, 970 };
 	// body_decs.position = Vec2{ 785,  };
 	body_decs.type = BodyType::STATIC;
 	body_decs.fixedRotation = true;
@@ -15,14 +15,14 @@ Elevator::Elevator()
 	body_decs.gravityScale = 0;
 
 	const auto box = new PolygonShape;
-	box->SetAsBox(48, 15);
+	box->SetAsBox(40, 15);
 	collider_decs.shape = box;
 	collider_decs.density = 1.0f;
 	collider_decs.friction = 1.0f;
 	collider_decs.restitution = 0.0f;
 	collider_decs.userData = this;
 
-	tag = Tag::UNKNOWN;
+	tag = Tag::ELEVATOR;
 	is_active = false;
 
 	g_camera = azorGetCamera();
@@ -45,7 +45,7 @@ void Elevator::Update()
 	if (is_active)
 	{
 		position.y += Debug::delta_time * -50.0f;
-		if (pos.y < 225.0f)
+		if (pos.y < 100.0f)
 		{
 			is_active = false;
 			// direction = -direction;

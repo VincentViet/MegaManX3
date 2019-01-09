@@ -103,9 +103,9 @@ void GameRun()
 		//Game Loop
 		azorPollInput(hwnd);
 
-		g_main_camera->Update();
 		g_physics->Update();
 		g_scene->Update();
+		g_main_camera->Update();
 
 		g_renderer->Clear(Debug::clear_color);
 		g_renderer->Begin();

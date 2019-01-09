@@ -38,13 +38,22 @@ void Camera::Update()
 			}
 			else
 			{
-				// pos.x = target_->body->GetPosition().x;
-				pos.x += offset_x;
+				// pos.x = target_->body->GetPosition().x + bound.left;
+				// if (offset_x != 0.0f)
+				// {
+				// 	pos.x += offset_x + 0.5f * offset_x / b2Abs(offset_x);
+				// }
+				// pos.x = offset_x;
+				if (target_->is_touch_elevator)
+				{
+					pos.x += offset_x;
+				}
+				else { pos.x = target_->position.x; }
 			}
 		}
 		else
 		{
-			if (target_->body->GetPosition().x >= width * 0.5f)
+			if (target_->body->GetPosition().x >= width * 0.5f && bound.right < MAP_MAX_WIDTH)
 				is_follwing_x = true;
 		}
 		
@@ -63,9 +72,21 @@ void Camera::Update()
 			}
 			else
 			{
-				// pos.y = target_->body->GetPosition().
-				pos.y += offset_y;
+				
+				// if (offset_y != 0.0f)
+				// {
+				// 	pos.y += offset_y + 0.5f * offset_y / b2Abs(offset_y);
+				// }
+				if (target_->is_touch_elevator)
+				{
+					pos.y += offset_y;
+				}
+				else
+				{
+					pos.y = target_->position.y;
+				}
 			}
+
 		}
 		else
 		{
@@ -120,7 +141,7 @@ void Camera::Update()
 		// 		is_follwing_y = true;
 		// }
 
-		// Debug::Log("y: %0.2f\n", target_->position.y);
+		Debug::Log("x: %d, y: %d\n", bound.left, bound.top);
 	}
 
 	bound.left = pos.x - width * 0.5f;

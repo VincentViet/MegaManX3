@@ -19,6 +19,8 @@ public:
 	bool is_touch_ground;
 	bool is_shooting;
 	Spawner* spawner;
+
+	// Vec2 vel;
 private:
 };
 

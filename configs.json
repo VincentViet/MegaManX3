@@ -8,6 +8,6 @@
     "sprites_path": "./resources/sprites/"
   },
   "Physics": {
-    "gravity": 300.0
+    "gravity": 250.0
   }
 }

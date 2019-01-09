@@ -132,7 +132,7 @@ void b2Log(const char* string, ...);
 
 // MAP SIZE
 #define MAP_MAX_WIDTH	7948
-#define MAP_MAX_HEIGHT	1070
+#define MAP_MAX_HEIGHT	5000
 
 // SMALL BUSTER SPEED
 #define SMALL_BUSTER_SPEED 500.0f
@@ -167,7 +167,8 @@ enum class Tag
 	PLAYER,
 	ENEMY,
 	BULLET,
-	WALL
+	WALL,
+	ELEVATOR
 };
 
 typedef struct Rect

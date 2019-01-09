@@ -28,6 +28,7 @@ public:
 	Rigidbody* body{};
 	int8 direction = 1;
 	bool is_jumping = true;
+	bool is_touch_elevator = false;
 	BodyDecs body_decs;
 	ColliderDecs collider_decs;
 	int32 id{};
