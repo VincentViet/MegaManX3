@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{CD561D8A-0AD6-47CC-8B88-DDB6035C8D81}</ProjectGuid>
     <RootNamespace>megamanx3</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,12 +70,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>./include</IncludePath>
-    <LibraryPath>./lib</LibraryPath>
+    <IncludePath>D:\ExternalLibraries\megamanx3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\ExternalLibraries\megamanx3\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>./include</IncludePath>
-    <LibraryPath>./lib</LibraryPath>
+    <IncludePath>D:\ExternalLibraries\megamanx3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\ExternalLibraries\megamanx3\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -127,10 +127,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\common\settings.cc" />
-<<<<<<< HEAD
-    <ClCompile Include="src\blasthornet.cc" />
-=======
->>>>>>> VincentViet
     <ClCompile Include="src\bullets\bullet.cc" />
     <ClCompile Include="src\bullets\busters\large_buster.cc" />
     <ClCompile Include="src\bullets\busters\medium_buster.cc" />
@@ -138,46 +134,28 @@
     <ClCompile Include="src\camera.cc" />
     <ClCompile Include="src\debug.cc" />
     <ClCompile Include="src\elevator.cc" />
-<<<<<<< HEAD
-    <ClCompile Include="src\genji.cc" />
-=======
     <ClCompile Include="src\game.cc" />
->>>>>>> VincentViet
     <ClCompile Include="src\ground.cc" />
-    <ClCompile Include="src\headgunner.cc" />
-    <ClCompile Include="src\helit.cc" />
     <ClCompile Include="src\input.cc" />
     <ClCompile Include="src\main.cc" />
-    <ClCompile Include="src\notorbanger.cc" />
+    <ClCompile Include="src\megaman.cc" />
     <ClCompile Include="src\object.cc" />
     <ClCompile Include="src\physics.cc" />
     <ClCompile Include="src\render.cc" />
     <ClCompile Include="src\resources.cc" />
     <ClCompile Include="src\scenes.cc" />
-<<<<<<< HEAD
-=======
     <ClCompile Include="src\spawners\buster_spawners.cc" />
->>>>>>> VincentViet
     <ClCompile Include="src\spawners\spawner.cc" />
     <ClCompile Include="src\sprite.cc" />
-    <ClCompile Include="src\states\blasthornet_states.cc" />
     <ClCompile Include="src\states\boss_states.cc" />
     <ClCompile Include="src\states\creep_states.cc" />
-    <ClCompile Include="src\states\genji_states.cc" />
-    <ClCompile Include="src\states\headgunner_states.cc" />
-    <ClCompile Include="src\states\helit_states.cc" />
     <ClCompile Include="src\states\megaman_states.cc" />
-    <ClCompile Include="src\states\notorbanger_states.cc" />
     <ClCompile Include="src\wall.cc" />
     <ClCompile Include="src\window.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\common\math.h" />
     <ClInclude Include="include\common\settings.h" />
-<<<<<<< HEAD
-    <ClInclude Include="src\blasthornet.h" />
-=======
->>>>>>> VincentViet
     <ClInclude Include="src\bullets\bullet.h" />
     <ClInclude Include="src\bullets\busters\large_buster.h" />
     <ClInclude Include="src\bullets\busters\medium_buster.h" />
@@ -185,36 +163,21 @@
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\debug.h" />
     <ClInclude Include="src\elevator.h" />
-<<<<<<< HEAD
-    <ClInclude Include="src\genji.h" />
-=======
->>>>>>> VincentViet
     <ClInclude Include="src\ground.h" />
-    <ClInclude Include="src\headgunner.h" />
-    <ClInclude Include="src\helit.h" />
     <ClInclude Include="src\input.h" />
     <ClInclude Include="src\megaman.h" />
-    <ClInclude Include="src\notorbanger.h" />
     <ClInclude Include="src\object.h" />
     <ClInclude Include="src\physics.h" />
     <ClInclude Include="src\render.h" />
     <ClInclude Include="src\resources.h" />
     <ClInclude Include="src\scenes.h" />
-<<<<<<< HEAD
-=======
     <ClInclude Include="src\spawners\buster_spawners.h" />
->>>>>>> VincentViet
     <ClInclude Include="src\spawners\spawner.h" />
     <ClInclude Include="src\sprite.h" />
     <ClInclude Include="src\state.h" />
-    <ClInclude Include="src\states\blasthornet_states.h" />
     <ClInclude Include="src\states\boss_states.h" />
     <ClInclude Include="src\states\creep_states.h" />
-    <ClInclude Include="src\states\genji_states.h" />
-    <ClInclude Include="src\states\headgunner_states.h" />
-    <ClInclude Include="src\states\helit_states.h" />
     <ClInclude Include="src\states\megaman_states.h" />
-    <ClInclude Include="src\states\notorbanger_states.h" />
     <ClInclude Include="src\wall.h" />
     <ClInclude Include="src\window.h" />
   </ItemGroup>

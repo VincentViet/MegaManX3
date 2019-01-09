@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 
@@ -24,4 +22,3 @@ private:
 
 #endif // ELEVATOR_H
 
->>>>>>> VincentViet
