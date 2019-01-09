@@ -1,5 +1,5 @@
 #include "headgunner.h"
-#include "states/headgunner_states.h"
+// #include "states/headgunner_states.h"
 #include <physics/polygon_shape.h>
 #include "window.h"
 #include "camera.h"
@@ -24,20 +24,20 @@ Headgunner::Headgunner()
 	collider_decs.restitution = 0.0f;
 	collider_decs.userData = this;
 
-	State::headgunner_idle = new HeadgunnerIdleState;
-	State::headgunner_shoot = new HeadgunnerShootState;
-	State::headgunner_exploded = new HeadgunnerExplodeState;
+	// State::headgunner_idle = new HeadgunnerIdleState;
+	// State::headgunner_shoot = new HeadgunnerShootState;
+	// State::headgunner_exploded = new HeadgunnerExplodeState;
 
 	tag = Tag::ENEMY;
-	ChangeState(State::headgunner_idle);
+	// ChangeState(State::headgunner_idle);
 
 	g_camera = azorGetCamera();
 }
 
 Headgunner::~Headgunner()
 {
-	delete State::headgunner_idle;
-	delete State::headgunner_exploded;
+	// delete State::headgunner_idle;
+	// delete State::headgunner_exploded;
 }
 
 void Headgunner::Start()
@@ -71,7 +71,7 @@ void Headgunner::OnColliderEnter(Object* collider)
 {
 	if (collider->tag == Tag::BULLET)
 	{
-		ChangeState(State::headgunner_exploded);
+		// ChangeState(State::headgunner_exploded);
 	}
 }
 

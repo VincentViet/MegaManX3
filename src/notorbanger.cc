@@ -1,5 +1,5 @@
 #include "notorbanger.h"
-#include "states/notorbanger_states.h"
+// #include "states/notorbanger_states.h"
 #include <physics/polygon_shape.h>
 #include "window.h"
 #include "camera.h"
@@ -24,21 +24,21 @@ Notorbanger::Notorbanger()
 	collider_decs.restitution = 0.0f;
 	collider_decs.userData = this;
 
-	State::notorbanger_idle = new NotorbangerIdleState;
-	State::notorbanger_jump = new NotorbangerJumpState;
-	State::notorbanger_shoot = new NotorbangerShootState;
-	State::notorbanger_exploded = new NotorbangerExplodeState;
+	// State::notorbanger_idle = new NotorbangerIdleState;
+	// State::notorbanger_jump = new NotorbangerJumpState;
+	// State::notorbanger_shoot = new NotorbangerShootState;
+	// State::notorbanger_exploded = new NotorbangerExplodeState;
 
 	tag = Tag::ENEMY;
-	ChangeState(State::notorbanger_idle);
+	// ChangeState(State::notorbanger_idle);
 
 	g_camera = azorGetCamera();
 }
 
 Notorbanger::~Notorbanger()
 {
-	delete State::notorbanger_idle;
-	delete State::notorbanger_exploded;
+	// delete State::notorbanger_idle;
+	// delete State::notorbanger_exploded;
 }
 
 void Notorbanger::Start()
@@ -72,7 +72,7 @@ void Notorbanger::OnColliderEnter(Object* collider)
 {
 	if (collider->tag == Tag::BULLET)
 	{
-		ChangeState(State::notorbanger_exploded);
+		// ChangeState(State::notorbanger_exploded);
 	}
 }
 

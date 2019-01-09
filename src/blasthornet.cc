@@ -1,5 +1,5 @@
 #include "blasthornet.h"
-#include "states/blasthornet_states.h"
+// #include "states/blasthornet_states.h"
 #include <physics/polygon_shape.h>
 #include "window.h"
 #include "camera.h"
@@ -24,23 +24,23 @@ Blasthornet::Blasthornet()
 	collider_decs.restitution = 0.0f;
 	collider_decs.userData = this;
 
-	State::blasthornet_idle = new BlasthornetIdleState;
-	State::blasthornet_sting = new BlasthornetStingState;
-	State::blasthornet_call = new BlasthornetCallState;
-	State::blasthornet_exploded = new BlasthornetExplodeState;
+	// State::blasthornet_idle = new BlasthornetIdleState;
+	// State::blasthornet_sting = new BlasthornetStingState;
+	// State::blasthornet_call = new BlasthornetCallState;
+	// State::blasthornet_exploded = new BlasthornetExplodeState;
 
 	tag = Tag::ENEMY;
-	ChangeState(State::blasthornet_idle);
+	// ChangeState(State::blasthornet_idle);
 
 	g_camera = azorGetCamera();
 }
 
 Blasthornet::~Blasthornet()
 {
-	delete State::blasthornet_idle;
-	delete State::blasthornet_sting;
-	delete State::blasthornet_call;
-	delete State::blasthornet_exploded;
+	// delete State::blasthornet_idle;
+	// delete State::blasthornet_sting;
+	// delete State::blasthornet_call;
+	// delete State::blasthornet_exploded;
 }
 
 void Blasthornet::Start()
@@ -74,7 +74,7 @@ void Blasthornet::OnColliderEnter(Object* collider)
 {
 	if (collider->tag == Tag::BULLET)
 	{
-		ChangeState(State::blasthornet_exploded);
+		// ChangeState(State::blasthornet_exploded);
 	}
 }
 

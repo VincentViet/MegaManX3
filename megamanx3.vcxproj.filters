@@ -114,6 +114,21 @@
     <ClCompile Include="src\elevator.cc">
       <Filter>Header Files\game</Filter>
     </ClCompile>
+    <ClCompile Include="src\blasthornet.cc">
+      <Filter>Header Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\genji.cc">
+      <Filter>Header Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\headgunner.cc">
+      <Filter>Header Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\helit.cc">
+      <Filter>Header Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\notorbanger.cc">
+      <Filter>Header Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\input.h">
@@ -192,6 +207,21 @@
       <Filter>Header Files\game\spawners</Filter>
     </ClInclude>
     <ClInclude Include="src\elevator.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\blasthornet.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\genji.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headgunner.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helit.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\notorbanger.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
   </ItemGroup>

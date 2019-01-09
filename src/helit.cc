@@ -1,5 +1,5 @@
 #include "helit.h"
-#include "states/helit_states.h"
+// #include "states/helit_states.h"
 #include <physics/polygon_shape.h>
 #include "window.h"
 #include "camera.h"
@@ -24,19 +24,19 @@ Helit::Helit()
 	collider_decs.restitution = 0.0f;
 	collider_decs.userData = this;
 
-	State::helit_idle = new HelitIdleState;
-	State::helit_exploded = new HelitExlodedState;
+	// State::helit_idle = new HelitIdleState;
+	// State::helit_exploded = new HelitExlodedState;
 
 	tag = Tag::ENEMY;
-	ChangeState(State::helit_idle);
+	// ChangeState(State::helit_idle);
 
 	g_camera = azorGetCamera();
 }
 
 Helit::~Helit()
 {
-	delete State::helit_idle;
-	delete State::helit_exploded;
+	// delete State::helit_idle;
+	// delete State::helit_exploded;
 }
 
 void Helit::Start()
@@ -70,7 +70,7 @@ void Helit::OnColliderEnter(Object* collider)
 {
 	if (collider->tag == Tag::BULLET)
 	{
-		ChangeState(State::helit_exploded);
+		// ChangeState(State::helit_exploded);
 	}
 }
 

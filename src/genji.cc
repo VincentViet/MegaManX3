@@ -1,5 +1,5 @@
 #include "genji.h"
-#include "states/genji_states.h"
+// #include "states/genji_states.h"
 #include <physics/polygon_shape.h>
 #include "window.h"
 #include "camera.h"
@@ -24,21 +24,21 @@ Genji::Genji()
 	collider_decs.restitution = 0.0f;
 	collider_decs.userData = this;
 
-	State::genji_idle = new GenjiIdleState;
-	State::genji_rotate = new GenjiRotateState;
-	State::genji_exploded = new GenjiExplodeState;
+	// State::genji_idle = new GenjiIdleState;
+	// State::genji_rotate = new GenjiRotateState;
+	// State::genji_exploded = new GenjiExplodeState;
 
 	tag = Tag::ENEMY;
-	ChangeState(State::genji_idle);
+	// ChangeState(State::genji_idle);
 
 	g_camera = azorGetCamera();
 }
 
 Genji::~Genji()
 {
-	delete State::genji_idle;
-	delete State::genji_rotate;
-	delete State::genji_exploded;
+	// delete State::genji_idle;
+	// delete State::genji_rotate;
+	// delete State::genji_exploded;
 }
 
 void Genji::Start()
@@ -72,7 +72,7 @@ void Genji::OnColliderEnter(Object* collider)
 {
 	if (collider->tag == Tag::BULLET)
 	{
-		ChangeState(State::genji_exploded);
+		// ChangeState(State::genji_exploded);
 	}
 }
 
