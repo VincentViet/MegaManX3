@@ -26,13 +26,16 @@
       <UniqueIdentifier>{c9fef6f6-edc4-407e-a43f-2b1762383d78}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\game\bullets">
-      <UniqueIdentifier>{4f7ddd08-b356-4847-bf48-ac5a8afb13f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\game\spawners">
-      <UniqueIdentifier>{7b0dc583-99f0-4acc-b9fe-cc7af81b64a2}</UniqueIdentifier>
+<<<<<<< HEAD
+=======
+      <UniqueIdentifier>{86b2eaff-3e8c-4e83-aed1-0667cc42700f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\game\bullets\busters">
-      <UniqueIdentifier>{1594ba1a-764f-4f1e-85e3-82902e488e4c}</UniqueIdentifier>
+      <UniqueIdentifier>{60d0279d-50be-4b05-9d3c-54db027ba4cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game\spawners">
+      <UniqueIdentifier>{34308986-66b1-4903-9599-c3e293598bd1}</UniqueIdentifier>
+>>>>>>> VincentViet
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +90,7 @@
     <ClCompile Include="src\wall.cc">
       <Filter>Header Files\game</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\states\helit_states.cc">
       <Filter>Header Files\states</Filter>
     </ClCompile>
@@ -117,6 +121,8 @@
     <ClCompile Include="src\blasthornet.cc">
       <Filter>Header Files\game</Filter>
     </ClCompile>
+=======
+>>>>>>> VincentViet
     <ClCompile Include="src\bullets\bullet.cc">
       <Filter>Header Files\game\bullets</Filter>
     </ClCompile>
@@ -129,7 +135,10 @@
     <ClCompile Include="src\bullets\busters\small_buster.cc">
       <Filter>Header Files\game\bullets\busters</Filter>
     </ClCompile>
-    <ClCompile Include="src\spawners\buster_spawner.cc">
+<<<<<<< HEAD
+=======
+    <ClCompile Include="src\spawners\buster_spawners.cc">
+>>>>>>> VincentViet
       <Filter>Header Files\game\spawners</Filter>
     </ClCompile>
     <ClCompile Include="src\spawners\spawner.cc">
@@ -197,6 +206,7 @@
     <ClInclude Include="src\wall.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="src\states\helit_states.h">
       <Filter>Header Files\states</Filter>
     </ClInclude>
@@ -227,6 +237,8 @@
     <ClInclude Include="src\blasthornet.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
+=======
+>>>>>>> VincentViet
     <ClInclude Include="src\bullets\bullet.h">
       <Filter>Header Files\game\bullets</Filter>
     </ClInclude>
@@ -239,10 +251,13 @@
     <ClInclude Include="src\bullets\busters\small_buster.h">
       <Filter>Header Files\game\bullets\busters</Filter>
     </ClInclude>
-    <ClInclude Include="src\spawners\buster_spawner.h">
+<<<<<<< HEAD
+=======
+    <ClInclude Include="src\spawners\spawner.h">
       <Filter>Header Files\game\spawners</Filter>
     </ClInclude>
-    <ClInclude Include="src\spawners\spawner.h">
+    <ClInclude Include="src\spawners\buster_spawners.h">
+>>>>>>> VincentViet
       <Filter>Header Files\game\spawners</Filter>
     </ClInclude>
     <ClInclude Include="src\elevator.h">

@@ -2,6 +2,7 @@
 #include <jansson/jansson.h>
 #include "debug.h"
 #include "camera.h"
+#include <physics/world.h>
 
 static AZORcamera g_camera;
 static Vec2 gravity;
@@ -58,4 +59,9 @@ Rect& Object::GetBound()
 Vec2 Object::GetPosition() const
 {
 	return position;
+}
+
+Object::~Object()
+{
+	// this->body->GetWorld()->DestroyBody(this->body);
 }

@@ -2,6 +2,7 @@
 #define MEGAMAN_H
 
 #include "object.h"
+#include "spawners/buster_spawners.h"
 
 class Megaman : public Object
 {
@@ -16,6 +17,9 @@ public:
 	void OnColliderExit(Object* collider) override;
 
 	bool is_touch_ground;
+	bool is_shooting;
+	Spawner* spawner;
+private:
 };
 
 #endif // MEGAMAN_H

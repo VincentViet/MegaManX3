@@ -23,7 +23,7 @@ public:
 	void Draw() override;
 
 private:
-	bool is_shooting;
+	// bool is_shooting;
 };
 
 class MegamanJump : public State
@@ -36,7 +36,7 @@ public:
 	void Draw() override;
 
 private:
-	bool is_shooting;
+	// bool is_shooting;
 };
 
 class MegamanShoot : public State
@@ -59,7 +59,7 @@ public:
 	void Draw() override;
 
 private:
-	bool is_shooting;
+	// bool is_shooting;
 };
 
 class MegamanClimb : public State
@@ -72,7 +72,7 @@ public:
 	void Draw() override;
 
 private:
-	bool is_shooting;
+	// bool is_shooting;
 };
 
 #endif // MEGAMAN_STATES_H
