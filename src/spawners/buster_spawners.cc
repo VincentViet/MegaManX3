@@ -4,7 +4,7 @@
 
 static AZORscene g_scene = nullptr;
 
-SmallBusterSpawner::SmallBusterSpawner(Vec2 offset, Object* owner)
+BusterSpawner::BusterSpawner(Vec2 offset, Object* owner)
 {
 	this->offset = offset;
 	this->owner = owner;
@@ -12,30 +12,66 @@ SmallBusterSpawner::SmallBusterSpawner(Vec2 offset, Object* owner)
 
 	for(uint8 index = 0; index < 10; index++)
 	{
-		bullets_.push_back(new SmallBuster);
-		g_scene->AddObject(bullets_[index]);
+		small_busters_.push_back(new SmallBuster);
+		g_scene->AddObject(small_busters_[index]);
 	}
 }
 
-SmallBusterSpawner::~SmallBusterSpawner()
+BusterSpawner::~BusterSpawner()
 {
-	for (auto&& bullet : bullets_)
+	for (auto&& buster : small_busters_)
 	{
-		delete bullet;
+		delete buster;
+	}
+
+	for (auto&& buster : medium_busters_)
+	{
+		delete buster;
+	}
+
+	for (auto&& buster : large_busters_)
+	{
+		delete buster;
 	}
 }
 
-void SmallBusterSpawner::Shoot() const
+void BusterSpawner::Shoot(const BulletType type)
 {
-	// static Vec2 pos;
-	for (auto&& bullet : bullets_)
+	switch (type)
 	{
-		if (!bullet->body->IsActive())
+	case BulletType::SMALL_BUSTER:
+		ShootSmallBuster();
+		break;
+
+	case BulletType::MEDIUM_BUSTER:
+		ShootMediumBuster();
+		break;
+
+	case BulletType::LARGE_BUSTER:
+		ShootLargeBuster();
+		break;
+	default: break;
+	}
+}
+
+void BusterSpawner::ShootSmallBuster()
+{
+	for (auto&& buster : small_busters_)
+	{
+		if (!buster->body->IsActive())
 		{
-			bullet->body->SetTransform(position, 0.0f);
-			bullet->direction = owner->direction;
-			bullet->body->SetActive(true);
+			buster->body->SetTransform(position, 0.0f);
+			buster->direction = owner->direction;
+			buster->body->SetActive(true);
 			break;
 		}
 	}
+}
+
+void BusterSpawner::ShootMediumBuster()
+{
+}
+
+void BusterSpawner::ShootLargeBuster()
+{
 }

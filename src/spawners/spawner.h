@@ -2,7 +2,13 @@
 #define SPAWNER_H
 
 #include "../bullets/bullet.h"
-#include <vector>
+
+enum class BulletType
+{
+	SMALL_BUSTER,
+	MEDIUM_BUSTER,
+	LARGE_BUSTER
+};
 
 class Spawner
 {
@@ -12,13 +18,12 @@ public:
 
 	void Update();
 
-	virtual void Shoot() const = 0;
+	virtual void Shoot(BulletType type) = 0;
 
 	Object* owner{};
 	Vec2 offset;
 protected:
 	Vec2 position;
-	std::vector<Bullet*> bullets_;
 private:
 };
 

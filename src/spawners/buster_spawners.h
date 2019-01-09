@@ -2,16 +2,24 @@
 #define SMALL_BUSTER_SPAWNER_H
 
 #include "spawner.h"
+#include <vector>
 
-class SmallBusterSpawner : public Spawner
+class BusterSpawner : public Spawner
 {
 public:
-	SmallBusterSpawner(Vec2 offset, Object* owner);
-	~SmallBusterSpawner();
+	BusterSpawner(Vec2 offset, Object* owner);
+	~BusterSpawner();
 
-	void Shoot() const override;
+	void Shoot(BulletType type) override;
 protected:
 private:
+	void ShootSmallBuster();
+	void ShootMediumBuster();
+	void ShootLargeBuster();
+
+	std::vector<Bullet*> small_busters_;
+	std::vector<Bullet*> medium_busters_;
+	std::vector<Bullet*> large_busters_;
 };
 
 #endif // SMALL_BUSTER_SPAWNER_H

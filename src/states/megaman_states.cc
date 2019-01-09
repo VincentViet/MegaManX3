@@ -52,7 +52,7 @@ void MegamanIdle::Update()
 	}
 	else if (azorIsKeyDown(Keys::KEY_C))
 	{
-		megaman->spawner->Shoot();
+		megaman->spawner->Shoot(BulletType::SMALL_BUSTER);
 		megaman->ChangeState(State::megaman_shoot);
 	}
 	else if (azorIsKeyDown(Keys::KEY_Z)/* && delay < 0.0f*/)
@@ -123,7 +123,7 @@ MegamanRun::MegamanRun()
 
 	delay_ = 5;
 	sprite_ = new Sprite(MEGAMAN_ALIAS, rects.data());
-	is_shooting = false;
+	// is_shooting = false;
 }
 
 MegamanRun::~MegamanRun()
@@ -149,7 +149,11 @@ void MegamanRun::Update()
 		}
 		else if (azorIsKeyDown(Keys::KEY_C))
 		{
-			is_shooting = true;
+			if (!megaman->is_shooting)
+			{
+				megaman->spawner->Shoot(BulletType::SMALL_BUSTER);
+			}
+			megaman->is_shooting = true;
 		}
 		else if (azorIsKeyDown(Keys::KEY_Z))
 		{
@@ -157,7 +161,7 @@ void MegamanRun::Update()
 		}
 		else
 		{
-			is_shooting = false;
+			megaman->is_shooting = false;
 		}
 
 		return;
@@ -174,7 +178,11 @@ void MegamanRun::Update()
 		}
 		else if (azorIsKeyDown(Keys::KEY_C))
 		{
-			is_shooting = true;
+			if (!megaman->is_shooting)
+			{
+				megaman->spawner->Shoot(BulletType::SMALL_BUSTER);
+			}
+			megaman->is_shooting = true;
 		}
 		else if (azorIsKeyDown(Keys::KEY_Z))
 		{
@@ -182,7 +190,7 @@ void MegamanRun::Update()
 		}
 		else
 		{
-			is_shooting = false;
+			megaman->is_shooting = false;
 		}
 		return;
 	}
@@ -207,7 +215,7 @@ void MegamanRun::Draw()
 		if (index == 11)
 			index = 0;
 
-		if (is_shooting)
+		if (megaman->is_shooting)
 			offset = 11;
 		else { offset = 0; }
 	}
@@ -238,7 +246,7 @@ MegamanJump::MegamanJump()
 
 	delay_ = 5;
 	sprite_ = new Sprite(MEGAMAN_ALIAS, rects.data());
-	is_shooting = false;
+	// is_shooting = false;
 }
 
 MegamanJump::~MegamanJump()
@@ -256,7 +264,7 @@ void MegamanJump::Update()
 	if (!megaman->is_jumping)
 	{
 		// megaman->vel.y = -150;
-		vel.y = -400;
+		vel.y = -800;
 		megaman->is_jumping = true;
 	}
 
@@ -277,11 +285,15 @@ void MegamanJump::Update()
 
 	if (azorIsKeyDown(Keys::KEY_C))
 	{
-		is_shooting = true;
+		if (!megaman->is_shooting)
+		{
+			megaman->spawner->Shoot(BulletType::SMALL_BUSTER);
+		}
+		megaman->is_shooting = true;
 	}
 	else
 	{
-		is_shooting = false;
+		megaman->is_shooting = false;
 	}
 }
 
@@ -303,7 +315,7 @@ void MegamanJump::Draw()
 		if (index == 5)
 			index = 4;
 
-		if (is_shooting)
+		if (megaman->is_shooting)
 			index = 9;
 		else { index = 4; }
 	}
@@ -380,7 +392,7 @@ MegamanDash::MegamanDash()
 
 	delay_ = 5;
 	sprite_ = new Sprite(MEGAMAN_ALIAS, rects.data());
-	is_shooting = false;
+	// is_shooting = false;
 }
 
 MegamanDash::~MegamanDash()
@@ -404,9 +416,13 @@ void MegamanDash::Update()
 			megaman->ChangeState(State::megaman_jump);
 		}else if (azorIsKeyDown(Keys::KEY_C))
 		{
-			is_shooting = true;
+			if (!megaman->is_shooting)
+			{
+				megaman->spawner->Shoot(BulletType::SMALL_BUSTER);
+			}
+			megaman->is_shooting = true;
 		}
-		else { is_shooting = false; }
+		else { megaman->is_shooting = false; }
 
 		charge_time -= Debug::delta_time;
 		// Debug::Log("%0.2f\n", charge_time);
@@ -438,7 +454,7 @@ void MegamanDash::Draw()
 		if (index == 2)
 			index = 1;
 
-		if (is_shooting)
+		if (megaman->is_shooting)
 			offset = 2;
 		else { offset = 0; }
 	}
@@ -446,7 +462,6 @@ void MegamanDash::Draw()
 	sprite_->Draw(index + offset, megaman->GetPosition(), megaman->direction);
 }
 #pragma endregion
-
 
 #pragma region Climp
 MegamanClimb::MegamanClimb()
@@ -462,7 +477,7 @@ MegamanClimb::MegamanClimb()
 
 	delay_ = 5;
 	sprite_ = new Sprite(MEGAMAN_ALIAS, rects.data());
-	is_shooting = false;
+	// is_shooting = false;
 }
 
 MegamanClimb::~MegamanClimb()
@@ -483,6 +498,18 @@ void MegamanClimb::Update()
 		megaman->body->SetLinearVelocity(Vec2{ -dir * 50.0f, -dir * 200.0f });
 		megaman->ChangeState(State::megaman_jump);
 	}
+	else if (azorIsKeyDown(Keys::LEFTARROW)
+		&& megaman->direction == 1)
+	{
+		megaman->body->SetLinearVelocity(Vec2{0, 0});
+		megaman->ChangeState(State::megaman_run);
+	}
+	else if (azorIsKeyDown(Keys::RIGHTARROW)
+		&& megaman->direction == -1)
+	{
+		megaman->body->SetLinearVelocity(Vec2{ 0, 0 });
+		megaman->ChangeState(State::megaman_run);
+	}
 }
 
 void MegamanClimb::Draw()
@@ -501,7 +528,7 @@ void MegamanClimb::Draw()
 		// if (index == 1)
 		// 	index = 0;
 
-		if (is_shooting)
+		if (megaman->is_shooting)
 			index = 1;
 		else { index = 0; }
 	}

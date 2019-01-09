@@ -133,6 +133,7 @@
     <ClCompile Include="src\bullets\busters\small_buster.cc" />
     <ClCompile Include="src\camera.cc" />
     <ClCompile Include="src\debug.cc" />
+    <ClCompile Include="src\elevator.cc" />
     <ClCompile Include="src\game.cc" />
     <ClCompile Include="src\ground.cc" />
     <ClCompile Include="src\input.cc" />
@@ -161,6 +162,7 @@
     <ClInclude Include="src\bullets\busters\small_buster.h" />
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\debug.h" />
+    <ClInclude Include="src\elevator.h" />
     <ClInclude Include="src\ground.h" />
     <ClInclude Include="src\input.h" />
     <ClInclude Include="src\megaman.h" />

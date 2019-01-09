@@ -11,8 +11,7 @@ static AZORcamera g_camera;
 
 Megaman::Megaman()
 {
-	// this->position = Vec2{ 100, 300 };
-	body_decs.position = b2Vec2{ 100, 450 };
+	body_decs.position = b2Vec2{ 50, 450 };
 	body_decs.type = BodyType::DYNAMIC;
 	body_decs.fixedRotation = true;
 	body_decs.userData = this;
@@ -37,8 +36,9 @@ Megaman::Megaman()
 	ChangeState(State::megaman_idle);
 
 	is_touch_ground = false;
+	is_shooting = false;
 
-	spawner = new SmallBusterSpawner(Vec2{10, 0}, this);
+	spawner = new BusterSpawner(Vec2{10, 0}, this);
 
 	g_window = azorGetWindow();
 	g_camera = azorGetCamera();
@@ -52,6 +52,8 @@ Megaman::~Megaman()
 	delete State::megaman_shoot;
 	delete State::megaman_dash;
 	delete State::megaman_climb;
+
+	delete spawner;
 }
 
 void Megaman::Start()
@@ -82,6 +84,7 @@ void Megaman::Update()
 		if (b2Abs(pos.x - old_pos.x) < 0.5)
 			g_camera->offset_x = 0.0f;
 		else { g_camera->offset_x = pos.x - old_pos.x; }
+		// g_camera->offset_x = pos.x - old_pos.x;
 	else
 		position.x = /*pos.x*/ pos.x /*+ g_camera->bound.left*/;
 	
@@ -90,6 +93,7 @@ void Megaman::Update()
 		if (b2Abs(pos.y - old_pos.y) < 0.5)
 			g_camera->offset_y = 0.0f;
 		else { g_camera->offset_y = pos.y - old_pos.y; }
+		// g_camera->offset_y = pos.y - old_pos.y;
 	else
 		position.y = /*pos.y*/pos.y /*+ g_camera->bound.top*/;
 
@@ -98,12 +102,13 @@ void Megaman::Update()
 
 	// this->body->SetTransform(pos, 0.0f);
 
-	// Debug::Log("x: %0.2f, y: %0.2f\n", position.x, position.y);
+	Debug::Log("x: %0.2f, y: %0.2f\n", g_camera->offset_x, g_camera->offset_y);
 
 	old_pos = body->GetPosition();
 
 	state->Update();
 	spawner->Update();
+	
 }
 
 void Megaman::Draw()

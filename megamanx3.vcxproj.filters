@@ -111,6 +111,9 @@
     <ClCompile Include="src\spawners\spawner.cc">
       <Filter>Header Files\game\spawners</Filter>
     </ClCompile>
+    <ClCompile Include="src\elevator.cc">
+      <Filter>Header Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\input.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="src\spawners\buster_spawners.h">
       <Filter>Header Files\game\spawners</Filter>
+    </ClInclude>
+    <ClInclude Include="src\elevator.h">
+      <Filter>Header Files\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

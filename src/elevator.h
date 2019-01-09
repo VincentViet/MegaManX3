@@ -1,14 +1,13 @@
-#ifndef MEGAMAN_H
-#define MEGAMAN_H
+#ifndef ELEVATOR_H
+#define ELEVATOR_H
 
 #include "object.h"
-#include "spawners/buster_spawners.h"
 
-class Megaman : public Object
+class Elevator : public Object
 {
 public:
-	Megaman();
-	~Megaman();
+	Elevator();
+	~Elevator();
 
 	void Start() override;
 	void Update() override;
@@ -16,10 +15,10 @@ public:
 	void OnColliderEnter(Object* collider) override;
 	void OnColliderExit(Object* collider) override;
 
-	bool is_touch_ground;
-	bool is_shooting;
-	Spawner* spawner;
 private:
+	bool is_active;
+	Sprite* sprite_;
 };
 
-#endif // MEGAMAN_H
+#endif // ELEVATOR_H
+
